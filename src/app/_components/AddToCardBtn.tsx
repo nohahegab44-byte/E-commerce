@@ -20,15 +20,15 @@ export default function AddToCardBtn({ productId }: { productId: string }) {
     const res = await addProductToCart(productId);
 
     if (res.status === "success" && res.data?.products) {
-      const products = res.data.products;
+      const products = res?.data.products;
       setCartProducts(products);
       toast.success(res.message , { position: "top-center" });
 
       // const itemsCount = res.numOfCartItems ?? res.numberOfCartItems ??
       //   products.reduce((acc, p) => acc + (p.count || 0), 0);
-      setNumOfCartItems(res.numberOfCartItems);
+      setNumOfCartItems(res?.numberOfCartItems || 0);
 
-      setTotalPriceOfCart(res.data.totalCartPrice ?? 0);
+      setTotalPriceOfCart(res?.data.totalCartPrice ?? 0);
     }
   } catch (err) {
     console.error(err);
