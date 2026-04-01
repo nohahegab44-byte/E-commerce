@@ -39,7 +39,7 @@ export default function CartContextProvider({
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const data = await getUserCard(token);
+      const data = await getUserCard();
 
       setCartId(data.cartId);
       setCartProducts(data.data.products || []);
