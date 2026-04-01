@@ -24,9 +24,9 @@ export default function AddToCardBtn({ productId }: { productId: string }) {
       setCartProducts(products);
       toast.success(res.message , { position: "top-center" });
 
-      const itemsCount = res.numOfCartItems ?? res.numberOfCartItems ??
-        products.reduce((acc, p) => acc + (p.count || 0), 0);
-      setNumOfCartItems(itemsCount);
+      // const itemsCount = res.numOfCartItems ?? res.numberOfCartItems ??
+      //   products.reduce((acc, p) => acc + (p.count || 0), 0);
+      setNumOfCartItems(res.numberOfCartItems);
 
       setTotalPriceOfCart(res.data.totalCartPrice ?? 0);
     }

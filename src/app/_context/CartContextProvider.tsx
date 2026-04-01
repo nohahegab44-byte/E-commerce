@@ -13,6 +13,8 @@ export const cartContext = createContext({
   setNumOfCartItems: (num: number) => {},
 });
 
+
+
 function getCartItemsCount(products: cartItemType[] = []) {
   return products.reduce((total, item) => total + (item.count || 0), 0);
 }

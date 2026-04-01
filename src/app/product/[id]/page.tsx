@@ -1,11 +1,18 @@
+
 import { getProductById } from '@/services/ProductsServies'
 import Link from 'next/link';
 import React from 'react'
 import { FaStar } from 'react-icons/fa';
 
-export default async function page({ params }: { params: { id: string } }) {
-   console.log(params);
-   const product = await getProductById(params.id)
+export default async function page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params; // Extract the product ID from the URL parameters
+
+  const product = await getProductById(id);
+
     return (
         <div className='min-h-screen bg-gray-100 flex justify-center py-10'>
 
@@ -56,10 +63,6 @@ export default async function page({ params }: { params: { id: string } }) {
           <p className='text-gray-600 whitespace-pre-line'>
             {product?.description}
           </p>
-
-          
-
-         
 
         
           <div className="flex gap-2 flex-wrap mt-4">

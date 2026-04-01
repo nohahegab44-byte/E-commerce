@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 import MySessionProvider from "./_providers/MySessionProvider";
 import CartContextProvider from "./_context/CartContextProvider";
 import { getUserCard } from "./_actions/CardActions";
-import { getAllProducts } from "@/services/ProductsServies";
+
 import Footer from "./_components/Footer/page";
 
 

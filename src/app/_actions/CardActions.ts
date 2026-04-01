@@ -51,7 +51,7 @@ export async function addProductToCart(id : string): Promise<cardResType> {
 
   console.log("final response from add to cart:", finalRes);
   return normalizeCartResponse(finalRes);
-  await getUserCard(); 
+ 
 }
 //==============================================================================
  export async function getUserCard() : Promise<cardResType> {
