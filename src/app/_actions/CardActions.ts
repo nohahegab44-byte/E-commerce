@@ -30,7 +30,7 @@ export async function addProductToCart(id : string): Promise<cardResType> {
 
   const token = await getMyToken();
 
-  const res = await fetch("https://ecommerce.routemisr.com/api/v2/cart", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v2/cart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,13 +51,14 @@ export async function addProductToCart(id : string): Promise<cardResType> {
 
   console.log("final response from add to cart:", finalRes);
   return normalizeCartResponse(finalRes);
+  await getUserCard(); 
 }
 //==============================================================================
  export async function getUserCard() : Promise<cardResType> {
       
   const token = await getMyToken();
 
-      const res = await fetch("https://ecommerce.routemisr.com/api/v2/cart",{
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v2/cart`,{
           headers :{
             token:token as string,
           }
@@ -66,6 +67,8 @@ export async function addProductToCart(id : string): Promise<cardResType> {
       console.log("final response from get user cart:", finalRes);
       return normalizeCartResponse(finalRes);
 
+      
+
 }
 
 //================================================================================
@@ -73,7 +76,7 @@ export async function addProductToCart(id : string): Promise<cardResType> {
       
       const token = await getMyToken();
       
-      const res = await fetch(`https://ecommerce.routemisr.com/api/v2/cart/${productId}`,{
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v2/cart/${productId}`,{
           headers :{
             token:token as string,
           },
@@ -89,7 +92,7 @@ export async function addProductToCart(id : string): Promise<cardResType> {
        
        const token = await getMyToken();
        
-       const res = await fetch(`https://ecommerce.routemisr.com/api/v2/cart/${id}`, {
+       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v2/cart/${id}`, {
          method: "PUT",
          headers: {
            "Content-Type": "application/json",
@@ -111,7 +114,7 @@ export async function addProductToCart(id : string): Promise<cardResType> {
       
       const token = await getMyToken();
       
-      const res = await fetch(`https://ecommerce.routemisr.com/api/v2/cart`,{
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v2/cart`,{
           headers :{
             token:token as string,
           },
@@ -125,7 +128,7 @@ export async function addProductToCart(id : string): Promise<cardResType> {
 //=======================================================================================
  export async function getBrands() {
   try {
-    const res = await fetch("https://ecommerce.routemisr.com/api/v1/brands?limit=30");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/brands?limit=30`);
     const data = await res.json();
     return data.data || []; 
   } catch (error) {

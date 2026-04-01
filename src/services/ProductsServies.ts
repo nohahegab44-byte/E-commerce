@@ -3,7 +3,7 @@ import { ProductType } from "@/types/Product.type"
 
 export async function getAllProducts(): Promise<ProductType[] | null> {
     try{
-        const res = await fetch("https://ecommerce.routemisr.com/api/v1/products",{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/products`,{
           cache :"force-cache",
           // next:{
           //   tags:"",
@@ -22,7 +22,7 @@ export async function getAllProducts(): Promise<ProductType[] | null> {
 
   export async function getProductById(id:string): Promise <ProductType | null>{
     try{
-      const res = await fetch (`https://ecommerce.routemisr.com/api/v1/products/${id}`)
+      const res = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/api/v1/products/${id}`)
       const finalRes = await res.json()
       console.log(finalRes.data)
       return finalRes.data
@@ -36,7 +36,7 @@ export async function getAllProducts(): Promise<ProductType[] | null> {
   export async function getProductsByBrand(brandId: string) {
   try {
     const res = await fetch(
-      `https://ecommerce.routemisr.com/api/v1/products?brand=${brandId}`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/products?brand=${brandId}`
     );
 
     if (!res.ok) throw new Error("Failed to fetch products");

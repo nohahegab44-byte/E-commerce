@@ -22,6 +22,7 @@ export default function AddToCardBtn({ productId }: { productId: string }) {
     if (res.status === "success" && res.data?.products) {
       const products = res.data.products;
       setCartProducts(products);
+      toast.success(res.message , { position: "top-center" });
 
       const itemsCount = res.numOfCartItems ?? res.numberOfCartItems ??
         products.reduce((acc, p) => acc + (p.count || 0), 0);
