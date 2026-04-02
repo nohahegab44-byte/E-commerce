@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { logInDataType, loginSchema } from "./login.schema";
 
 import { signIn } from "next-auth/react";
+import { toast } from "sonner";
 export default function Page() {
   const router = useRouter();
 
@@ -37,8 +38,10 @@ export default function Page() {
 
   if (res?.ok) {
     console.log("SUCCESS");
+    toast("login success",{position:"top-center"})
     router.push("/");
   } else {
+    toast("login fialed",{position:"top-center"})
     console.log("ERROR", res?.error);
   }
 }

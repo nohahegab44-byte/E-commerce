@@ -1,7 +1,6 @@
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+
 
 export const nextAuthConfig: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -65,7 +64,7 @@ export const nextAuthConfig: NextAuthOptions = {
 
   session: {
     strategy: "jwt",
-    maxAge: 60 * 60 * 24, // 1 يوم
+    maxAge: 60 * 60 * 24, 
   },
 
   pages: {

@@ -2,6 +2,7 @@
 // run in server component only to scure the token in the cookies and not accessible from the client side
 import { cookies } from "next/headers";
 import { logInDataType } from "./login.schema";
+import { toast } from "sonner";
 
 
 export async function loginUpAction(data:logInDataType) {
@@ -17,6 +18,12 @@ export async function loginUpAction(data:logInDataType) {
         });
         const responseData = await res.json();
         console.log(responseData);
+        if (!res.ok) {
+          toast.error(responseData.message || "Login failed");
+        }else{
+          toast.success(responseData.message || "Login successful!");
+          console.log("Login successful!");
+        }
 
 // securitytoken with cookies
        const myCookies: any = cookies();
@@ -30,9 +37,6 @@ export async function loginUpAction(data:logInDataType) {
        } else {
          console.warn("Could not set cookie: cookies.set is not available in this runtime.");
        }
-
-      
-
         return res.ok ;;
        
 }
