@@ -34,13 +34,13 @@ export default function CheckoutPage() {
 
     try {
       if (!cartId) {
-        throw new Error("Cart ID is missing")
+        toast("loading...", { position: "top-center" })
       }
 
       if (value.type === "cash") {
         const res = await createCashOrder(cartId, userData, "cash")
         console.log("Response from createCashOrder:", res)
-        toast.success("Order placed with cash payment!", { position: "top-center" })
+        toast.success(res.message || "Order placed with cash payment!", { position: "top-center" })
       } else {
         toast.success("Order placed with visa payment!", { position: "top-center" })
       }
