@@ -1,6 +1,5 @@
 
-
-
+//like loading
 export function SkeletonDemo() {
   return (
     <div className="w-10/12 mx-auto p-5">
